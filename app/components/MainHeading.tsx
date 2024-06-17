@@ -2,7 +2,7 @@ import React from 'react'
 
 const MainHeading = () => {
   return (
-    <div className="w-full">
+    <div className="w-full mb-4">
         <h1 className="text-pink-200 text-7xl w-full justify-center mb-1 tracking-tight">
           Sketch Grind
         </h1>

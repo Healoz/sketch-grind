@@ -26,7 +26,7 @@ const UploadImageForm: FC<UploadImageFormProps> = ({
     const selectedFile = target.files[0];
 
     // set selected file regardless
-    if (selectedFile) {
+    if (selectedFile && isImgFileType(selectedFile)) {
       setFile(target.files[0]);
     } else {
       console.log("invalid img type chosen");
