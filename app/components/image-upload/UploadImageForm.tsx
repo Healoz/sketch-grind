@@ -3,14 +3,15 @@ import React, { FC, useRef, useState } from "react";
 
 interface UploadImageFormProps {
   setFile: (file: File | undefined) => void;
-  isImgFileType: (file: File) => boolean;
+  setPreview: (preview: string | ArrayBuffer | null) => void;
 }
 
 const UploadImageForm: FC<UploadImageFormProps> = ({
   setFile,
-  isImgFileType,
+  setPreview
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
+  // const [preview, setPreview] = useState<string | ArrayBuffer | null>(null);
 
   const handleFileInputClick = () => {
     if (fileInputRef.current) {
@@ -25,10 +26,19 @@ const UploadImageForm: FC<UploadImageFormProps> = ({
 
     const selectedFile = target.files[0];
 
-    // set selected file regardless
-    if (selectedFile && isImgFileType(selectedFile)) {
+    const file = new FileReader;
+
+    file.onload = function() {
+      console.log('file', file.result);
+      setPreview(file.result);
+    }
+
+    file.readAsDataURL(selectedFile);
+
+    if (selectedFile) {
       setFile(target.files[0]);
     } else {
+      // show alert
       console.log("invalid img type chosen");
     }
   };
@@ -39,6 +49,7 @@ const UploadImageForm: FC<UploadImageFormProps> = ({
         className="hidden"
         ref={fileInputRef}
         type="file"
+        accept="image/png, image/jpg, image/jpeg, image/gif, image/tiff"
         name="image"
         onChange={handleOnChange}
       ></input>

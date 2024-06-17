@@ -7,21 +7,13 @@ import { useRouter } from "next/router";
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import Alert from "../Alert";
 
-const UploadImage = () => {
+interface UploadImageProps {
+  setPreview: (preview: string | ArrayBuffer | null) => void;
+}
+
+const UploadImage: FC<UploadImageProps> = ({ setPreview }) => {
   const [file, setFile] = useState<File | undefined>();
   const [alertShowing, setAlertShowing] = useState(false);
-  // const router = useRouter();
-
-  const isImgFileType = (file: File): boolean => {
-    const allowedTypes = ["image/jpeg", "image/png", "image/gif", "image/tiff"];
-    if (allowedTypes.includes(file.type)) {
-      return true;
-    } else {
-      setAlertShowing(true);
-      setTimeout(() => setAlertShowing(false), 5000);
-      return false;
-    }
-  };
 
   return (
     <div className="flex-grow flex items-center flex-col mt-16 w-full">
@@ -34,7 +26,7 @@ const UploadImage = () => {
           <p className="text-pink-200 inline">
             Drag and Drop file here or&nbsp;
           </p>
-          <UploadImageForm setFile={setFile} isImgFileType={isImgFileType} />
+          <UploadImageForm setFile={setFile} setPreview={setPreview} />
         </div>
       </div>
       <div className="w-full mb-4">
@@ -46,17 +38,16 @@ const UploadImage = () => {
       <AnimatePresence>
         {alertShowing && (
           <motion.div
-          initial={{ opacity: 0, x: -100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 100 }}
-        >
-          <Alert
-            alertTitle="Incorrect file format"
-            alertDesc="The file you provided was in the incorrect format. Please provide JPEG, PNG, GIF or TIFF."
-          />
-        </motion.div>
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 100 }}
+          >
+            <Alert
+              alertTitle="Incorrect file format"
+              alertDesc="The file you provided was in the incorrect format. Please provide JPEG, PNG, GIF or TIFF."
+            />
+          </motion.div>
         )}
-        
       </AnimatePresence>
     </div>
   );
