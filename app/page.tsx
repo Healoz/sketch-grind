@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import UploadImage from "./components/image-upload/UploadImage";
 import MainHeading from "./components/MainHeading";
 import ImagePreview from "./components/image-upload/ImagePreview";
@@ -11,22 +11,34 @@ export default function Home() {
   return (
     <main
       className="bg-slate-900 bg-cover bg-center font-sans flex items-center justify-center overflow-hidden"
-      // style={{ backgroundImage: preview ? `url(${preview})` : "none" 
-      
+      // style={{ backgroundImage: preview ? `url(${preview})` : "none"
     >
-      <div className="min-w-full flex flex-col h-svh p-10">
+      <motion.div className="min-w-full flex flex-col h-svh p-10" layout>
         <MainHeading />
-        {preview ? (
-          <motion.div
-            initial={{ opacity: 0, y: 300 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <ImagePreview preview={preview} />
-          </motion.div>
-        ) : (
-          <UploadImage setPreview={setPreview} />
-        )}
-      </div>
+        <AnimatePresence>
+          {preview ? (
+            <motion.div
+              key={1}
+              initial={{ opacity: 0, x: 600, y: 50 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              exit={{ opacity: 0, x: 600, y: 50 }}
+              transition={{ delay: 0.73, duration: 0.7, type: 'spring'}}
+            >
+              <ImagePreview preview={preview} />
+            </motion.div>
+          ) : (
+            <motion.div
+              key={2}
+              initial={{ opacity: 0, x: -600, y: -50 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              exit={{ opacity: 0, x: -600, y: -50 }}
+              transition={{ duration: 0.7, type: 'spring' }}
+            >
+              <UploadImage setPreview={setPreview} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.div>
     </main>
   );
 }

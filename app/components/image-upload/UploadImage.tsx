@@ -6,6 +6,7 @@ import ImageFileDisplay from "./ImageFileDisplay";
 import { useRouter } from "next/router";
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
 import Alert from "../Alert";
+import { FileUploader } from "react-drag-drop-files";
 
 interface UploadImageProps {
   setPreview: (preview: string | ArrayBuffer | null) => void;
@@ -20,12 +21,14 @@ const UploadImage: FC<UploadImageProps> = ({ setPreview }) => {
       <h1 className="text-pink-200 text-xl tracking-tight mb-4">
         Upload reference
       </h1>
+      {/* <FileUploader className="border-pink-200"/> */}
       <div className="border-pink-200 bg-slate-800 border-2 border-dashed rounded w-full flex justify-center items-center flex-col p-12 mb-4">
         <UploadFileIcon className="text-pink-200 text-5xl" />
         <div className="mt-4">
           <p className="text-pink-200 inline">
             Drag and Drop file here or&nbsp;
           </p>
+
           <UploadImageForm setFile={setFile} setPreview={setPreview} />
         </div>
       </div>
