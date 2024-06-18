@@ -22,9 +22,13 @@ export default function Home() {
               initial={{ opacity: 0, x: 600, y: 50 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               exit={{ opacity: 0, x: 600, y: 50 }}
-              transition={{ delay: 0.73, duration: 0.7, type: 'spring'}}
+              transition={{
+                delay: 0.73,
+                duration: 0.7,
+                type: "spring",
+              }}
             >
-              <ImagePreview preview={preview} />
+              <ImagePreview preview={preview} setPreview={setPreview} />
             </motion.div>
           ) : (
             <motion.div
@@ -32,7 +36,11 @@ export default function Home() {
               initial={{ opacity: 0, x: -600, y: -50 }}
               animate={{ opacity: 1, x: 0, y: 0 }}
               exit={{ opacity: 0, x: -600, y: -50 }}
-              transition={{ duration: 0.7, type: 'spring' }}
+              transition={{
+                delay: preview ? 0.73 : 0, // Apply delay only when transitioning from on to off
+                duration: 0.7,
+                type: "spring",
+              }}
             >
               <UploadImage setPreview={setPreview} />
             </motion.div>
