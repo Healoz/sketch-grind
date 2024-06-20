@@ -44,7 +44,7 @@ const UploadImageForm: FC<UploadImageFormProps> = ({
   };
 
   return (
-    <div className="inline">
+    <div className="inline pointer-events-auto">
       <input
         className="hidden"
         ref={fileInputRef}

@@ -1,15 +1,16 @@
 import React, { FC } from 'react'
 import { AnimatePresence, motion } from "framer-motion";
 import UploadImage from './image-upload/UploadImage';
-import MainHeading from './MainHeading';
+import MainHeading from '../MainHeading';
 import ImagePreview from './image-upload/ImagePreview';
 
 interface SessionSetupProps {
     preview: string | ArrayBuffer | null;
     setPreview: (preview: string | ArrayBuffer | null) => void;
+    setSessionStarted: (sessionStarted: boolean) => void;
 }
 
-const SessionSetup: FC<SessionSetupProps> = ({preview, setPreview}) => {
+const SessionSetup: FC<SessionSetupProps> = ({preview, setPreview, setSessionStarted}) => {
 
   return (
     <div>
@@ -31,7 +32,7 @@ const SessionSetup: FC<SessionSetupProps> = ({preview, setPreview}) => {
                   duration: 0.3,
                 }}
               >
-                <ImagePreview preview={preview} setPreview={setPreview} />
+                <ImagePreview preview={preview} setPreview={setPreview} setSessionStarted={setSessionStarted} />
               </motion.div>
             ) : (
               <motion.div

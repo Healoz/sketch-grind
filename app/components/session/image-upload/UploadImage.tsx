@@ -1,11 +1,11 @@
 "use client";
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import UploadFileIcon from "@mui/icons-material/UploadFile";
 import UploadImageForm from "./UploadImageForm";
 import ImageFileDisplay from "./ImageFileDisplay";
 import { useRouter } from "next/router";
 import { AnimatePresence, motion, useAnimationControls } from "framer-motion";
-import Alert from "../Alert";
+import Alert from "../../Alert";
 import { FileUploader } from "react-drag-drop-files";
 
 interface UploadImageProps {
@@ -15,6 +15,28 @@ interface UploadImageProps {
 const UploadImage: FC<UploadImageProps> = ({ setPreview }) => {
   const [file, setFile] = useState<File | undefined>();
   const [alertShowing, setAlertShowing] = useState(false);
+  const dropAreaRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+
+  const handleFileDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    console.log("file dropped");
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const handleDragEnter = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
 
   return (
     <div className="flex-grow flex items-center flex-col mt-16 w-full">
@@ -22,16 +44,25 @@ const UploadImage: FC<UploadImageProps> = ({ setPreview }) => {
         Upload reference
       </h1>
       {/* <FileUploader className="border-pink-200"/> */}
-      <div className="border-pink-200 bg-slate-800 border-2 border-dashed rounded w-full flex justify-center items-center flex-col p-12 mb-4">
-        <UploadFileIcon className="text-pink-200 text-5xl" />
-        <div className="mt-4">
+      <motion.div
+        ref={dropAreaRef}
+        onDrop={handleFileDrop}
+        onDragOver={handleDragOver}
+        onDragEnter={handleDragEnter}
+        onDragLeave={handleDragLeave}
+        className={`border-pink-200 border-2 border-dashed rounded w-full flex justify-center items-center flex-col p-12 mb-4 ${
+          isDragging ? 'bg-slate-700' : 'bg-slate-800'
+        }`}
+      >
+        <UploadFileIcon className="text-pink-200 text-5xl pointer-events-none" />
+        <div className="mt-4 pointer-events-none">
           <p className="text-pink-200 inline">
             Drag and Drop file here or&nbsp;
           </p>
 
           <UploadImageForm setFile={setFile} setPreview={setPreview} />
         </div>
-      </div>
+      </motion.div>
       <div className="w-full mb-4">
         <p className="text-pink-200 text-sm">
           Supported formats: JPEG, PNG, GIF, TIFF
