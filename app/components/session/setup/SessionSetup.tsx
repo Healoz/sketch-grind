@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import { AnimatePresence, motion } from "framer-motion";
 import UploadImage from './image-upload/UploadImage';
-import MainHeading from '../MainHeading';
+import MainHeading from '../../MainHeading';
 import ImagePreview from './image-upload/ImagePreview';
 
 interface SessionSetupProps {

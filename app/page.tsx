@@ -1,10 +1,9 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import UploadImage from "./components/session/image-upload/UploadImage";
 import MainHeading from "./components/MainHeading";
-import ImagePreview from "./components/session/image-upload/ImagePreview";
 import { useState } from "react";
-import SessionSetup from "./components/session/SessionSetup";
+import SessionSetup from "./components/session/setup/SessionSetup";
+import SessionInProgress from "./components/session/in-progress/SessionInProgress";
 
 export default function Home() {
   const [preview, setPreview] = useState<string | ArrayBuffer | null>(null);
@@ -22,7 +21,12 @@ export default function Home() {
               key={1}
               initial={{ opacity: 1, y: 0, x: 0 }}
               animate={{ opacity: 1, y: 0, x: 0 }}
-              exit={{ opacity: 0, y: 400, x: -50, transition: { duration: 0.6, type: "spring" } }}
+              exit={{
+                opacity: 0,
+                y: 400,
+                x: -50,
+                transition: { duration: 0.6, type: "spring" },
+              }}
             >
               <SessionSetup
                 preview={preview}
@@ -31,7 +35,7 @@ export default function Home() {
               />
             </motion.div>
           ) : (
-            <h1 key={2}>Hello</h1>
+            <SessionInProgress preview={preview} />
           )}
         </AnimatePresence>
       </motion.div>

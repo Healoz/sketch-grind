@@ -10,7 +10,8 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
-      }
+      },
+      
     },
   },
   plugins: [],

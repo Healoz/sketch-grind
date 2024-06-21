@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import CreateIcon from "@mui/icons-material/Create";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import Button from "../../Button";
-import Reference from "../../Reference";
+import Button from "@/app/components/Button";
+import Reference from "@/app/components/Reference";
 
 interface ImagePreviewProps {
   preview: string | ArrayBuffer | null;
