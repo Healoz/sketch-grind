@@ -11,7 +11,10 @@ const config: Config = {
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
       },
-      
+      backgroundImage: {
+        'diagonal-line': "url('/diagonal-line-texture.svg')",
+      }
+
     },
   },
   plugins: [],

@@ -1,18 +1,18 @@
 import React from "react";
-import CurrentTimeIndicator from "./CurrentTimeIndicator";
 import TimelineDisplay from "./TimelineDisplay";
+import TimeDisplay from "./TimeDisplay";
 
 const SessionTimer = () => {
   return (
     <div>
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-3">
+        {/* Current time */}
+        <TimeDisplay /> 
         <div className="w-full">
-          <CurrentTimeIndicator />
           <TimelineDisplay />
         </div>
-        <div className="border border-pink-200 text-pink-200 p-2 rounded text-sm">
-          13:25
-        </div>
+        {/* Full time */}
+        <TimeDisplay />
       </div>
     </div>
   );

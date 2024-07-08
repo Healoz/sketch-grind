@@ -14,7 +14,7 @@ export default function Home() {
       className="bg-slate-900 bg-cover bg-center font-sans flex items-center justify-center overflow-hidden"
       // style={{ backgroundImage: preview ? `url(${preview})` : "none"
     >
-      <motion.div className="min-w-full flex flex-col h-svh p-10" layout>
+      <motion.div className="min-w-full flex flex-col h-svh p-8" layout>
         <AnimatePresence>
           {!sessionStarted ? (
             <motion.div
