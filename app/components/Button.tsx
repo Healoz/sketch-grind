@@ -4,7 +4,7 @@ import { SvgIconTypeMap } from "@mui/material/SvgIcon";
 
 interface IconButtonProps {
   icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & { muiName: string };
-  children: React.ReactNode;
+  children?: React.ReactNode;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 

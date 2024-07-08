@@ -1,6 +1,6 @@
 "use client";
 import React, { FC, useEffect, useRef, useState } from "react";
-import UploadFileIcon from "@mui/icons-material/UploadFile";
+import UploadFileRoundedIcon from '@mui/icons-material/UploadFileRounded';
 import UploadImageForm from "./UploadImageForm";
 import ImageFileDisplay from "./ImageFileDisplay";
 import { useRouter } from "next/router";
@@ -89,7 +89,7 @@ const UploadImage: FC<UploadImageProps> = ({ setPreview }) => {
           isDragging ? "bg-slate-700" : "bg-slate-800"
         }`}
       >
-        <UploadFileIcon className="text-pink-200 text-5xl pointer-events-none" />
+        <UploadFileRoundedIcon className="text-pink-200 text-5xl pointer-events-none" />
         <div className="mt-4 pointer-events-none">
           <p className="text-pink-200 inline">
             Drag and Drop file here or&nbsp;
