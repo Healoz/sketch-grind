@@ -1,9 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 
-const TimeDisplay = () => {
+interface TimeDisplayProps {
+  children: React.ReactNode;
+}
+
+const TimeDisplay: FC<TimeDisplayProps> = ({ children }) => {
   return (
     <div className=" text-pink-200">
-      13:25
+      {children}
     </div>
   );
 };

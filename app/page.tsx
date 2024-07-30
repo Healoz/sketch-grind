@@ -14,10 +14,17 @@ export default function Home() {
   const [session, setSession] = useState<Session>({
     id: "1",
     img: "jdkwajd",
-    steps: [
-      { stepType: StepType.STUDY, timeInSeconds: 10 }
-    ]
-  })
+    steps: [{ stepType: StepType.STUDY, timeInSeconds: 10 }],
+  });
+
+  const getTotalSessionTime = (): number => {
+    let totalTime = 0;
+    session.steps.forEach((step) => {
+      totalTime += step.timeInSeconds;
+    });
+
+    return totalTime;
+  };
 
   return (
     <main className="bg-slate-900 bg-cover bg-center font-sans flex items-center justify-center overflow-hidden">
@@ -56,7 +63,11 @@ export default function Home() {
                 duration: 0.3,
               }}
             >
-              <SessionInProgress preview={preview} />
+              <SessionInProgress
+                preview={preview}
+                session={session}
+                getTotalSessionTime={getTotalSessionTime}
+              />
             </motion.div>
           )}
         </AnimatePresence>

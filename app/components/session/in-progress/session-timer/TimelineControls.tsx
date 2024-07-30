@@ -4,7 +4,6 @@ import Button from "@/app/components/Button";
 import SkipNextRoundedIcon from "@mui/icons-material/SkipNextRounded";
 import SkipPreviousRoundedIcon from "@mui/icons-material/SkipPreviousRounded";
 import PauseRoundedIcon from "@mui/icons-material/PauseRounded";
-import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { Size } from "@/app/types/Size";
 
 const TimelineControls = () => {

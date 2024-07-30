@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import SessionTimer from "./session-timer/SessionTimer";
 import StepName from "./StepName";
 import { StepType } from "@/app/types/StepType";
@@ -8,12 +8,21 @@ import ContentCopyRoundedIcon from "@mui/icons-material/ContentCopyRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Button from "../../Button";
 import { Size } from "@/app/types/Size";
+import { Session } from "@/app/types/Session";
 
 interface SessionInProgressProps {
   preview: string | ArrayBuffer | null;
+  session: Session;
+  getTotalSessionTime: () => number;
 }
 
-const SessionInProgress: FC<SessionInProgressProps> = ({ preview }) => {
+const SessionInProgress: FC<SessionInProgressProps> = ({
+  preview,
+  session,
+  getTotalSessionTime,
+}) => {
+  const [sessionProgressInSecs, setSessionProgressInSecs] = useState(0);
+
   return (
     <div className="flex flex-col h-full justify-between py-6">
       <div className="flex w-full justify-between items-center">
@@ -32,7 +41,11 @@ const SessionInProgress: FC<SessionInProgressProps> = ({ preview }) => {
           </div>
         )}
       </div>
-      <SessionTimer />
+      <SessionTimer
+        session={session}
+        getTotalSessionTime={getTotalSessionTime}
+        sessionProgressInSecs={sessionProgressInSecs}
+      />
     </div>
   );
 };
