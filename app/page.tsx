@@ -4,16 +4,23 @@ import MainHeading from "./components/MainHeading";
 import { useState } from "react";
 import SessionSetup from "./components/session/setup/SessionSetup";
 import SessionInProgress from "./components/session/in-progress/SessionInProgress";
+import { Session } from "./types/Session";
+import { Step } from "./types/Step";
+import { StepType } from "./types/StepType";
 
 export default function Home() {
   const [preview, setPreview] = useState<string | ArrayBuffer | null>(null);
   const [sessionStarted, setSessionStarted] = useState(false);
+  const [session, setSession] = useState<Session>({
+    id: "1",
+    img: "jdkwajd",
+    steps: [
+      { stepType: StepType.STUDY, timeInSeconds: 10 }
+    ]
+  })
 
   return (
-    <main
-      className="bg-slate-900 bg-cover bg-center font-sans flex items-center justify-center overflow-hidden"
-      // style={{ backgroundImage: preview ? `url(${preview})` : "none"
-    >
+    <main className="bg-slate-900 bg-cover bg-center font-sans flex items-center justify-center overflow-hidden">
       <motion.div className="min-w-full flex flex-col h-svh p-8" layout>
         <AnimatePresence>
           {!sessionStarted ? (
@@ -35,7 +42,22 @@ export default function Home() {
               />
             </motion.div>
           ) : (
-            <SessionInProgress preview={preview} />
+            <motion.div
+              className="h-full"
+              initial={{ opacity: 0, x: 300, y: 100 }}
+              animate={{
+                opacity: 1,
+                x: 0,
+                y: 0,
+                scale: 1,
+                transition: { delay: 0.65 },
+              }}
+              transition={{
+                duration: 0.3,
+              }}
+            >
+              <SessionInProgress preview={preview} />
+            </motion.div>
           )}
         </AnimatePresence>
       </motion.div>
