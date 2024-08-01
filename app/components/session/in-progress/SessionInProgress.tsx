@@ -70,6 +70,7 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
         sessionProgress={sessionProgress}
         setSessionRunning={setSessionRunning}
         sessionRunning={sessionRunning}
+        sessionSteps={session.steps}
       />
     </div>
   );

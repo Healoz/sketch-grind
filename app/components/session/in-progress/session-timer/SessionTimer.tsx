@@ -3,6 +3,7 @@ import TimelineDisplay from "./TimelineDisplay";
 import TimeDisplay from "./TimeDisplay";
 import TimelineControls from "./TimelineControls";
 import { Session } from "@/app/types/Session";
+import { Step } from "@/app/types/Step";
 
 interface SessionTimerProps {
   session: Session;
@@ -10,6 +11,7 @@ interface SessionTimerProps {
   sessionProgress: number;
   setSessionRunning: (isRunning: boolean) => void;
   sessionRunning: boolean;
+  sessionSteps: Step[];
 }
 
 const SessionTimer: FC<SessionTimerProps> = ({
@@ -18,6 +20,7 @@ const SessionTimer: FC<SessionTimerProps> = ({
   sessionProgress,
   setSessionRunning,
   sessionRunning,
+  sessionSteps
 }) => {
   const formatTime = (totalSeconds: number): string => {
     const hours = Math.floor(totalSeconds / 3600);
@@ -44,6 +47,7 @@ const SessionTimer: FC<SessionTimerProps> = ({
           <TimelineDisplay
             getTotalSessionTime={getTotalSessionTime}
             sessionProgress={sessionProgress}
+            sessionSteps={sessionSteps}
           />
         </div>
         {/* Full time */}

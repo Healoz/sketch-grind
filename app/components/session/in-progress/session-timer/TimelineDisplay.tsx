@@ -3,15 +3,42 @@ import TimeDisplay from "./TimeDisplay";
 import Triangle from "../../../../../public/triangle.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Step } from "@/app/types/Step";
 
 interface TimelineDisplayProps {
   getTotalSessionTime: () => number;
   sessionProgress: number;
+  sessionSteps: Step[];
 }
 
-const TimelineDisplay: FC<TimelineDisplayProps> = ({ getTotalSessionTime, sessionProgress }) => {
+const TimelineDisplay: FC<TimelineDisplayProps> = ({
+  getTotalSessionTime,
+  sessionProgress,
+  sessionSteps,
+}) => {
+  const widthPassed = (sessionProgress / getTotalSessionTime()) * 100 + "%";
 
-  const widthPassed = ((sessionProgress / getTotalSessionTime()) * 100) + "%";
+  const calculateStepWidth = (step: Step): number => {
+    return (step.timeInSeconds / getTotalSessionTime()) * 100;
+  };
+
+  const StepDisplay = () => {
+    return (
+      <div className="w-full h-3 flex gap-1">
+        {sessionSteps.map((step) => {
+          return (
+            <div
+              className="h-full bg-pink-200 rounded"
+              style={{ width: `${calculateStepWidth(step)}%` }}
+            ></div>
+          );
+        })}
+        {/* <div className="w-1/2 h-full bg-pink-200 rounded"></div>
+        <div className="w-1/6 h-full border border-pink-200 rounded"></div>
+        <div className="w-1/3 h-full  bg-pink-200/30 rounded "></div> */}
+      </div>
+    );
+  };
 
   return (
     <div className="w-full mb-1 relative">
@@ -32,11 +59,7 @@ const TimelineDisplay: FC<TimelineDisplayProps> = ({ getTotalSessionTime, sessio
       </motion.div>
 
       {/* timeline */}
-      <div className="w-full h-3 flex gap-1">
-        <div className="w-1/2 h-full bg-pink-200 rounded"></div>
-        <div className="w-1/6 h-full border border-pink-200 rounded"></div>
-        <div className="w-1/3 h-full  bg-pink-200/30 rounded "></div>
-      </div>
+      <StepDisplay />
     </div>
   );
 };
