@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import SessionTimer from "./session-timer/SessionTimer";
 import StepName from "./StepName";
 import { StepType } from "@/app/types/StepType";
@@ -21,7 +21,34 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
   session,
   getTotalSessionTime,
 }) => {
-  const [sessionProgressInSecs, setSessionProgressInSecs] = useState(0);
+  const [sessionRunning, setSessionRunning] = useState(true);
+  const [sessionProgress, setSessionProgress] = useState(0);
+
+
+  // run timer if session is running
+  useEffect(() => {
+
+    let interval: NodeJS.Timeout | undefined;
+
+    if (sessionRunning) {
+      interval = setInterval(() => {
+        setSessionProgress(prevSessionProgress => prevSessionProgress + 0.1)
+      }, 100);
+
+    }
+    else {
+      clearInterval(interval);
+    }
+     
+    return () => clearInterval(interval); 
+    
+  }, [sessionRunning])
+
+  useEffect(() => {
+    console.log(sessionProgress);
+  }, [sessionProgress])
+
+  
 
   return (
     <div className="flex flex-col h-full justify-between py-6">
@@ -44,7 +71,7 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
       <SessionTimer
         session={session}
         getTotalSessionTime={getTotalSessionTime}
-        sessionProgressInSecs={sessionProgressInSecs}
+        sessionProgress={sessionProgress}
       />
     </div>
   );

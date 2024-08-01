@@ -7,13 +7,13 @@ import { Session } from "@/app/types/Session";
 interface SessionTimerProps {
   session: Session;
   getTotalSessionTime: () => number;
-  sessionProgressInSecs: number;
+  sessionProgress: number;
 }
 
 const SessionTimer: FC<SessionTimerProps> = ({
   session,
   getTotalSessionTime,
-  sessionProgressInSecs
+  sessionProgress
 }) => {
 
   const formatTime = (totalSeconds: number): string => {
