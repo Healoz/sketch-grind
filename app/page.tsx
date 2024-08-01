@@ -14,7 +14,7 @@ export default function Home() {
   const [session, setSession] = useState<Session>({
     id: "1",
     img: "jdkwajd",
-    steps: [{ stepType: StepType.STUDY, timeInSeconds: 10 }],
+    steps: [{ stepType: StepType.STUDY, timeInSeconds: 120 }],
   });
 
   const getTotalSessionTime = (): number => {
