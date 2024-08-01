@@ -1,12 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 import TimeDisplay from "./TimeDisplay";
 import Triangle from "../../../../../public/triangle.svg";
 import Image from "next/image";
 
-const TimelineDisplay = () => {
-  const percentageTimePassed = 0;
+interface TimelineDisplayProps {
+  getTotalSessionTime: () => number;
+  sessionProgress: number;
+}
 
-  const widthPassed = (percentageTimePassed / 100) * 100 + "%";
+const TimelineDisplay: FC<TimelineDisplayProps> = ({ getTotalSessionTime, sessionProgress }) => {
+
+  const widthPassed = ((sessionProgress / getTotalSessionTime()) * 100) + "%";
 
   return (
     <div className="w-full mb-1 relative">

@@ -21,7 +21,7 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
   session,
   getTotalSessionTime,
 }) => {
-  const [sessionRunning, setSessionRunning] = useState(true);
+  const [sessionRunning, setSessionRunning] = useState(false);
   const [sessionProgress, setSessionProgress] = useState(0);
 
 
@@ -32,8 +32,8 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
 
     if (sessionRunning) {
       interval = setInterval(() => {
-        setSessionProgress(prevSessionProgress => prevSessionProgress + 0.1)
-      }, 100);
+        setSessionProgress(prevSessionProgress => prevSessionProgress + 1)
+      }, 1000);
 
     }
     else {
@@ -43,10 +43,6 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
     return () => clearInterval(interval); 
     
   }, [sessionRunning])
-
-  useEffect(() => {
-    console.log(sessionProgress);
-  }, [sessionProgress])
 
   
 
@@ -72,6 +68,8 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
         session={session}
         getTotalSessionTime={getTotalSessionTime}
         sessionProgress={sessionProgress}
+        setSessionRunning={setSessionRunning}
+        sessionRunning={sessionRunning}
       />
     </div>
   );
