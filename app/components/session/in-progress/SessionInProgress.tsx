@@ -23,28 +23,61 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
 }) => {
   const [sessionRunning, setSessionRunning] = useState(false);
   const [sessionProgress, setSessionProgress] = useState(0);
-
+  const [currentStepIndex, setCurrentStepIndex] = useState(0);
+  const [timeForNextStep, setTimeForNextStep] = useState(0);
 
   // run timer if session is running
   useEffect(() => {
-
     let interval: NodeJS.Timeout | undefined;
 
     if (sessionRunning) {
+      // increment the overall timer by 1 second
       interval = setInterval(() => {
-        setSessionProgress(prevSessionProgress => prevSessionProgress + 1)
+        setSessionProgress((prevSessionProgress) => prevSessionProgress + 1);
       }, 1000);
 
-    }
-    else {
+    } else {
       clearInterval(interval);
     }
-     
-    return () => clearInterval(interval); 
-    
-  }, [sessionRunning])
+    return () => clearInterval(interval);
+  }, [sessionRunning]);
 
-  
+  // check every second if the current time has passed the time needed for next step
+  // if it has, pause the timer and increment the currentStepIndex
+  useEffect(() => {
+    if (!sessionRunning) {
+      // if session isn't running, dont perform checks
+      return;
+    }
+    if (sessionProgress >= timeForNextStep) {
+      setSessionRunning(false);
+      setCurrentStepIndex((prevCurrentStepIndex) => {
+        console.log("Incrementing step index:", prevCurrentStepIndex + 1);
+        return prevCurrentStepIndex + 1;
+      });
+    }
+  }, [sessionProgress])
+
+  // everytime the currentStepIndex changes, find the new goal for the timeForNextStep
+  useEffect(() => {
+    console.log("Current Step Index changed:", currentStepIndex);
+    setTimeForNextStep(calculateElapsedTimeForStep());
+  }, [currentStepIndex])
+
+  // gets the total elapsed time needed for the next step
+  const calculateElapsedTimeForStep = (): number => {
+    const timeElapsedForNextStep = session.steps.reduce(
+      (totalTime, step, index) => {
+        if (index <= currentStepIndex) {
+          return totalTime + step.timeInSeconds;
+        }
+        return totalTime;
+      },
+      0
+    );
+    console.log("Calculated time for next step:", timeElapsedForNextStep);
+    return timeElapsedForNextStep;
+  };
 
   return (
     <div className="flex flex-col h-full justify-between py-6">

@@ -15,10 +15,10 @@ export default function Home() {
     id: "1",
     img: "jdkwajd",
     steps: [
-      { stepType: StepType.STUDY, timeInSeconds: 10 },
-      { stepType: StepType.STUDY, timeInSeconds: 30 },
-      { stepType: StepType.STUDY, timeInSeconds: 10 },
-      { stepType: StepType.STUDY, timeInSeconds: 10 },
+      { stepType: StepType.STUDY, timeInSeconds: 2 },
+      { stepType: StepType.STUDY, timeInSeconds: 4 },
+      { stepType: StepType.STUDY, timeInSeconds: 3 },
+      { stepType: StepType.STUDY, timeInSeconds: 5 },
     ],
   });
 
