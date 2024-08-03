@@ -4,6 +4,7 @@ import Triangle from "../../../../../public/triangle.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Step } from "@/app/types/Step";
+import { StepType } from "@/app/types/StepType";
 
 interface TimelineDisplayProps {
   getTotalSessionTime: () => number;
@@ -23,12 +24,33 @@ const TimelineDisplay: FC<TimelineDisplayProps> = ({
   };
 
   const StepDisplay = () => {
+    const styles = {
+      [StepType.STUDY]: {
+        backgroundColour: "bg-pink-200",
+        border: "",
+      },
+      [StepType.CHECK_MISTAKES]: {
+        backgroundColour: "bg-pink-200/30",
+        border: "",
+      },
+      [StepType.BREAK]: {
+        backgroundColour: "bg-slate-900",
+        border: "border border-pink-200",
+      },
+      default: {
+        backgroundColour: "bg-pink-200",
+        border: "",
+      },
+    };
     return (
       <div className="w-full h-3 flex gap-1">
         {sessionSteps.map((step) => {
+          // depending on step type display differently
+          const { backgroundColour, border } =
+            styles[step.stepType] || styles.default;
           return (
             <div
-              className="h-full bg-pink-200 rounded"
+              className={`h-full ${backgroundColour} ${border} rounded`}
               style={{ width: `${calculateStepWidth(step)}%` }}
             ></div>
           );

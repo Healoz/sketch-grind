@@ -17,7 +17,7 @@ export default function Home() {
     steps: [
       { stepType: StepType.STUDY, timeInSeconds: 2 },
       { stepType: StepType.CHECK_MISTAKES, timeInSeconds: 4 },
-      { stepType: StepType.STUDY, timeInSeconds: 3 },
+      { stepType: StepType.BREAK, timeInSeconds: 3 },
       { stepType: StepType.CHECK_MISTAKES, timeInSeconds: 5 },
     ],
   });
