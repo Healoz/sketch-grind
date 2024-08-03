@@ -29,7 +29,6 @@ const UploadImageForm: FC<UploadImageFormProps> = ({
     const file = new FileReader;
 
     file.onload = function() {
-      console.log('file', file.result);
       setPreview(file.result);
     }
 

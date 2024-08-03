@@ -32,7 +32,6 @@ const UploadImage: FC<UploadImageProps> = ({ setPreview }) => {
     e.preventDefault();
     setIsDragging(false);
     const files = e.dataTransfer.files;
-    console.log(files);
 
     // validate the file is correct
     if (files.length > 0) {

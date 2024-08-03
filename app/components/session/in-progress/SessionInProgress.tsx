@@ -45,16 +45,16 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
   // check every second if the current time has passed the time needed for next step
   // if it has, pause the timer and increment the currentStepIndex
   useEffect(() => {
-    if (!sessionRunning) {
-      // if session isn't running, dont perform checks
-      return;
-    }
-    if (sessionProgress >= timeForNextStep) {
+    
+    if (sessionRunning && sessionProgress >= timeForNextStep) {
       setSessionRunning(false);
-      setCurrentStepIndex((prevCurrentStepIndex) => {
-        console.log("Incrementing step index:", prevCurrentStepIndex + 1);
-        return prevCurrentStepIndex + 1;
-      });
+      // Add a small delay before incrementing the step index to avoid premature changes
+      setTimeout(() => {
+        setCurrentStepIndex((prevCurrentStepIndex) => {
+          console.log("Incrementing step index:", prevCurrentStepIndex + 1);
+          return prevCurrentStepIndex + 1;
+        });
+      }, 1000) 
     }
   }, [sessionProgress])
 
@@ -83,7 +83,7 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
     <div className="flex flex-col h-full justify-between py-6">
       <div className="flex w-full justify-between items-center">
         <Button icon={CloseRoundedIcon} />
-        <StepName stepType={StepType.STUDY}>Step name</StepName>
+        <StepName stepType={session.steps[currentStepIndex].stepType}></StepName>
         <div className="w-[66px]"></div>
       </div>
       <div className="w-full flex justify-center">
@@ -92,7 +92,6 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
             <div className="mb-4">
               <Button icon={ContentCopyRoundedIcon} size={Size.SMALL}></Button>
             </div>
-
             <Reference imgUrl={preview} />
           </div>
         )}

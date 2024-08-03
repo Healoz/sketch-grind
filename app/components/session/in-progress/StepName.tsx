@@ -2,7 +2,6 @@ import { StepType } from "@/app/types/StepType";
 import React, { FC, ReactNode } from "react";
 
 interface StepNameProps {
-  children: ReactNode;
   stepType: StepType;
 }
 
@@ -29,7 +28,7 @@ const styles = {
   },
 };
 
-const StepName: FC<StepNameProps> = ({ children, stepType }) => {
+const StepName: FC<StepNameProps> = ({ stepType }) => {
   const { textColour, backgroundColour, border } =
     styles[stepType] || styles.default;
 
@@ -38,7 +37,7 @@ const StepName: FC<StepNameProps> = ({ children, stepType }) => {
       <div
         className={`${textColour} ${backgroundColour} ${border} px-8 py-4 flex justify-center rounded`}
       >
-        {children}
+        <p>Step name</p>
       </div>
     </div>
   );
