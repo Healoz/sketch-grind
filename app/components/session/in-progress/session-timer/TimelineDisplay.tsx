@@ -70,7 +70,7 @@ const TimelineDisplay: FC<TimelineDisplayProps> = ({
           left: `calc(${widthPassed} - 6px)`, // Adjust the position by subtracting half the triangle width (6px)
           top: -10,
         }}
-        transition={{ duration: 1, ease: "linear" }}
+        transition={{ duration: 0.5, ease: "linear" }}
       >
         <Image
           src={Triangle}
@@ -79,7 +79,11 @@ const TimelineDisplay: FC<TimelineDisplayProps> = ({
           alt="Current time indicator"
         />
       </motion.div>
-
+      <motion.div
+        className="bg-teal-400 h-full w-full absolute mix-blend-overlay rounded"
+        animate={{ width: widthPassed }}
+        transition={{ duration: 0.5, ease: "linear" }}
+      ></motion.div>
       {/* timeline */}
       <StepDisplay />
     </div>

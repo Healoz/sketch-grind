@@ -31,10 +31,10 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
     let interval: NodeJS.Timeout | undefined;
 
     if (sessionRunning) {
-      // increment the overall timer by 1 second
+      // increment the overall timer by 0.5 of a second
       interval = setInterval(() => {
-        setSessionProgress((prevSessionProgress) => prevSessionProgress + 1);
-      }, 1000);
+        setSessionProgress((prevSessionProgress) => prevSessionProgress + 0.5);
+      }, 500);
 
     } else {
       clearInterval(interval);
@@ -54,7 +54,7 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
           console.log("Incrementing step index:", prevCurrentStepIndex + 1);
           return prevCurrentStepIndex + 1;
         });
-      }, 1000) 
+      }, 500) 
     }
   }, [sessionProgress])
 
