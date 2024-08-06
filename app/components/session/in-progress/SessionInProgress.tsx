@@ -19,7 +19,7 @@ interface SessionInProgressProps {
 const SessionInProgress: FC<SessionInProgressProps> = ({
   preview,
   session,
-  getTotalSessionTime,
+  getTotalSessionTime
 }) => {
   const [sessionRunning, setSessionRunning] = useState(false);
   const [sessionProgress, setSessionProgress] = useState(0);
@@ -58,17 +58,22 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
     }
   }, [sessionProgress])
 
-  // everytime the currentStepIndex changes, find the new goal for the timeForNextStep
+  // everytime the currentStepIndex changes, find the new goal for the timeForNextStep. 
+  
   useEffect(() => {
     console.log("Current Step Index changed:", currentStepIndex);
-    setTimeForNextStep(calculateElapsedTimeForStep());
+    setTimeForNextStep(calculateElapsedTimeForStep(currentStepIndex));
+
+    // if user has skipped manually, need to change current time (use calculatedtimeforStep)
+    setSessionProgress(calculateElapsedTimeForStep(currentStepIndex - 1));
+    
   }, [currentStepIndex])
 
   // gets the total elapsed time needed for the next step
-  const calculateElapsedTimeForStep = (): number => {
+  const calculateElapsedTimeForStep = (stepIndex: number): number => {
     const timeElapsedForNextStep = session.steps.reduce(
       (totalTime, step, index) => {
-        if (index <= currentStepIndex) {
+        if (index <= stepIndex) {
           return totalTime + step.timeInSeconds;
         }
         return totalTime;
@@ -79,10 +84,30 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
     return timeElapsedForNextStep;
   };
 
+  const handleSkipForwards = () => {
+    console.log("skip forwards");
+    setCurrentStepIndex(prevStepIndex => prevStepIndex + 1);
+    setSessionRunning(false);
+  }
+
+  const handleSkipBackwards = () => {
+    console.log("skip backwards");
+    if (currentStepIndex == 0) {
+      setSessionProgress(0)
+    }
+    else {
+      setSessionProgress((prevSessionProgress) => {
+        // start start val of prev step start
+        return calculateElapsedTimeForStep(currentStepIndex - 1);
+      });
+    }
+    setSessionRunning(false);
+  }
+
   return (
     <div className="flex flex-col h-full justify-between py-6">
       <div className="flex w-full justify-between items-center">
-        <Button icon={CloseRoundedIcon} />
+        <Button icon={CloseRoundedIcon} size={Size.SMALL}/>
         <StepName stepType={session.steps[currentStepIndex].stepType}></StepName>
         <div className="w-[66px]"></div>
       </div>
@@ -103,6 +128,10 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
         setSessionRunning={setSessionRunning}
         sessionRunning={sessionRunning}
         sessionSteps={session.steps}
+        setCurrentStepIndex={setCurrentStepIndex}
+        currentStepIndex={currentStepIndex}
+        handleSkipForwards={handleSkipForwards}
+        handleSkipBackwards={handleSkipBackwards}
       />
     </div>
   );

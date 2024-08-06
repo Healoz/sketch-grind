@@ -13,6 +13,7 @@ interface IconButtonProps {
     muiName: string;
   };
   toggle?: boolean;
+  innactive?: boolean;
 }
 
 const styles = {
@@ -41,6 +42,7 @@ const Button: FC<IconButtonProps> = ({
   onClick = () => {},
   toggle,
   toggleIcon,
+  innactive,
 }) => {
   const { padding, iconSize } = size
     ? styles[size]
@@ -51,11 +53,13 @@ const Button: FC<IconButtonProps> = ({
   return (
     <motion.div
       initial={{ scale: 1 }}
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
+      whileHover={innactive ? {} : { scale: 1.05 }}
+      whileTap={innactive ? {} : { scale: 0.95 }}
+      style={{ opacity: innactive ? 0.5 : 1}}
     >
       <button
-        onClick={onClick}
+        onClick={innactive ? undefined : onClick}
+        style={{ cursor: innactive ? 'default' : 'pointer'}}
         className={`text-pink-200 border-pink-200 border rounded flex gap-3 ${padding}`}
       >
         <IconComponent className={iconSize} />

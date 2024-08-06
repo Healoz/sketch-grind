@@ -12,6 +12,10 @@ interface SessionTimerProps {
   setSessionRunning: (isRunning: boolean) => void;
   sessionRunning: boolean;
   sessionSteps: Step[];
+  setCurrentStepIndex: (stepIndex: number) => void;
+  currentStepIndex: number;
+  handleSkipBackwards: () => void;
+  handleSkipForwards: () => void;
 }
 
 const SessionTimer: FC<SessionTimerProps> = ({
@@ -20,7 +24,11 @@ const SessionTimer: FC<SessionTimerProps> = ({
   sessionProgress,
   setSessionRunning,
   sessionRunning,
-  sessionSteps
+  sessionSteps,
+  setCurrentStepIndex,
+  currentStepIndex,
+  handleSkipBackwards,
+  handleSkipForwards
 }) => {
   const formatTime = (totalSeconds: number): string => {
     const hours = Math.floor(totalSeconds / 3600);
@@ -56,6 +64,11 @@ const SessionTimer: FC<SessionTimerProps> = ({
       <TimelineControls
         setSessionRunning={setSessionRunning}
         sessionRunning={sessionRunning}
+        setCurrentStepIndex={setCurrentStepIndex}
+        currentStepIndex={currentStepIndex}
+        sessionProgress={sessionProgress}
+        handleSkipBackwards={handleSkipBackwards}
+        handleSkipForwards={handleSkipForwards}
       />
     </div>
   );
