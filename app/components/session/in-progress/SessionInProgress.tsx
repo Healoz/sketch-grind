@@ -14,12 +14,16 @@ interface SessionInProgressProps {
   preview: string | ArrayBuffer | null;
   session: Session;
   getTotalSessionTime: () => number;
+  sessionFinished: boolean;
+  setSessionFinished: (sessionFinished: boolean) => void;
 }
 
 const SessionInProgress: FC<SessionInProgressProps> = ({
   preview,
   session,
   getTotalSessionTime,
+  sessionFinished,
+  setSessionFinished,
 }) => {
   const [sessionRunning, setSessionRunning] = useState(false);
   const [sessionProgress, setSessionProgress] = useState(0);
@@ -44,15 +48,31 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
   // check every second if the current time has passed the time needed for next step
   // if it has, pause the timer and increment the currentStepIndex
   useEffect(() => {
-    if (sessionRunning && sessionProgress >= timeForNextStep) {
-      setSessionRunning(false);
+    if (sessionProgress < timeForNextStep || !sessionRunning) {
+      return;
+    }
+
+    // fulfilled the time for the next step or finish of session
+    setSessionRunning(false);
+
+    // check if session is complete
+    if (currentStepIndex < session.steps.length - 1) {
       // Add a small delay before incrementing the step index to avoid premature changes
       setTimeout(() => {
+        console.log("current step index: " + currentStepIndex);
+        console.log(`max num of steps: ${session.steps.length - 1}`);
+        // only increment the step index if
         setCurrentStepIndex((prevCurrentStepIndex) => {
           console.log("Incrementing step index:", prevCurrentStepIndex + 1);
           return prevCurrentStepIndex + 1;
         });
       }, 500);
+    } else {
+      // immediately should remove ability to play and skip
+      setTimeout(() => {
+        console.log("session finished");
+        setSessionFinished(true);
+      }, 1000);
     }
 
     // need to make sure when skipping backwards the step index is an appropriate value
@@ -84,7 +104,10 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
 
   const handleSkipForwards = () => {
     console.log("skip forwards");
-    setCurrentStepIndex((prevStepIndex) => prevStepIndex + 1);
+    if (currentStepIndex < session.steps.length) {
+      setCurrentStepIndex((prevStepIndex) => prevStepIndex + 1);
+    }
+
     setSessionRunning(false);
   };
 

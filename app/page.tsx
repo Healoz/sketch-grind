@@ -7,18 +7,19 @@ import SessionInProgress from "./components/session/in-progress/SessionInProgres
 import { Session } from "./types/Session";
 import { Step } from "./types/Step";
 import { StepType } from "./types/StepType";
+import { SessionStatus } from "./types/SessionStatus";
 
 export default function Home() {
   const [preview, setPreview] = useState<string | ArrayBuffer | null>(null);
   const [sessionStarted, setSessionStarted] = useState(false);
+  const [sessionFinished, setSessionFinished] = useState(false);
+  const [sessionState, setSessionState] = useState<SessionStatus>(SessionStatus.SETUP);
   const [session, setSession] = useState<Session>({
     id: "1",
     img: "jdkwajd",
     steps: [
       { stepType: StepType.STUDY, timeInSeconds: 2 },
       { stepType: StepType.CHECK_MISTAKES, timeInSeconds: 4 },
-      { stepType: StepType.BREAK, timeInSeconds: 3 },
-      { stepType: StepType.CHECK_MISTAKES, timeInSeconds: 5 },
     ],
   });
 
@@ -72,6 +73,8 @@ export default function Home() {
                 preview={preview}
                 session={session}
                 getTotalSessionTime={getTotalSessionTime}
+                sessionFinished={sessionFinished}
+                setSessionFinished={setSessionFinished}
               />
             </motion.div>
           )}
