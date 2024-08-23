@@ -9,21 +9,20 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import Button from "../../Button";
 import { Size } from "@/app/types/Size";
 import { Session } from "@/app/types/Session";
+import { SessionStatus } from "@/app/types/SessionStatus";
 
 interface SessionInProgressProps {
   preview: string | ArrayBuffer | null;
   session: Session;
   getTotalSessionTime: () => number;
-  sessionFinished: boolean;
-  setSessionFinished: (sessionFinished: boolean) => void;
+  setSessionStatus: (sessionStatus: SessionStatus) => void;
 }
 
 const SessionInProgress: FC<SessionInProgressProps> = ({
   preview,
   session,
   getTotalSessionTime,
-  sessionFinished,
-  setSessionFinished,
+  setSessionStatus
 }) => {
   const [sessionRunning, setSessionRunning] = useState(false);
   const [sessionProgress, setSessionProgress] = useState(0);
@@ -71,7 +70,7 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
       // immediately should remove ability to play and skip
       setTimeout(() => {
         console.log("session finished");
-        setSessionFinished(true);
+        setSessionStatus(SessionStatus.FINISHED);
       }, 1000);
     }
 

@@ -3,17 +3,18 @@ import CreateIcon from "@mui/icons-material/Create";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Button from "@/app/components/Button";
 import Reference from "@/app/components/Reference";
+import { SessionStatus } from "@/app/types/SessionStatus";
 
 interface ImagePreviewProps {
   preview: string | ArrayBuffer | null;
   setPreview: (preview: string | ArrayBuffer | null) => void;
-  setSessionStarted: (sessionStarted: boolean) => void;
+  setSessionStatus: (sessionStatus: SessionStatus) => void;
 }
 
 const ImagePreview: FC<ImagePreviewProps> = ({
   preview,
   setPreview,
-  setSessionStarted,
+  setSessionStatus
 }) => {
   return (
     <div className="h-full flex flex-col items-center mt-6">
@@ -29,7 +30,7 @@ const ImagePreview: FC<ImagePreviewProps> = ({
             <Button icon={ArrowBackIcon} onClick={() => setPreview(null)}>
               Back
             </Button>
-            <Button icon={CreateIcon} onClick={() => setSessionStarted(true)}>
+            <Button icon={CreateIcon} onClick={() => setSessionStatus(SessionStatus.IN_PROGRESS)}>
               Study Ref
             </Button>
           </div>

@@ -8,12 +8,13 @@ import { Session } from "./types/Session";
 import { Step } from "./types/Step";
 import { StepType } from "./types/StepType";
 import { SessionStatus } from "./types/SessionStatus";
+import SessionComplete from "./components/session/complete/SessionComplete";
 
 export default function Home() {
   const [preview, setPreview] = useState<string | ArrayBuffer | null>(null);
-  const [sessionStarted, setSessionStarted] = useState(false);
-  const [sessionFinished, setSessionFinished] = useState(false);
-  const [sessionState, setSessionState] = useState<SessionStatus>(SessionStatus.SETUP);
+  const [sessionStatus, setSessionStatus] = useState<SessionStatus>(
+    SessionStatus.SETUP
+  );
   const [session, setSession] = useState<Session>({
     id: "1",
     img: "jdkwajd",
@@ -36,9 +37,9 @@ export default function Home() {
     <main className="bg-slate-900 bg-cover bg-center font-sans flex items-center justify-center overflow-hidden">
       <motion.div className="min-w-full flex flex-col h-svh p-8" layout>
         <AnimatePresence>
-          {!sessionStarted ? (
+          {sessionStatus === SessionStatus.SETUP && (
             <motion.div
-              key={1}
+              key={SessionStatus.SETUP}
               initial={{ opacity: 1, y: 0, x: 0 }}
               animate={{ opacity: 1, y: 0, x: 0 }}
               exit={{
@@ -51,11 +52,14 @@ export default function Home() {
               <SessionSetup
                 preview={preview}
                 setPreview={setPreview}
-                setSessionStarted={setSessionStarted}
+                setSessionStatus={setSessionStatus}
               />
             </motion.div>
-          ) : (
+          )}
+
+          {sessionStatus === SessionStatus.IN_PROGRESS && (
             <motion.div
+              key={SessionStatus.IN_PROGRESS}
               className="h-full"
               initial={{ opacity: 0, x: 300, y: 100 }}
               animate={{
@@ -73,8 +77,17 @@ export default function Home() {
                 preview={preview}
                 session={session}
                 getTotalSessionTime={getTotalSessionTime}
-                sessionFinished={sessionFinished}
-                setSessionFinished={setSessionFinished}
+                setSessionStatus={setSessionStatus}
+              />
+            </motion.div>
+          )}
+
+          {sessionStatus === SessionStatus.FINISHED && (
+            <motion.div key={SessionStatus.FINISHED}>
+              <SessionComplete
+                preview={preview}
+                setSessionStatus={setSessionStatus}
+                setPreview={setPreview}
               />
             </motion.div>
           )}
