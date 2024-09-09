@@ -24,40 +24,36 @@ const TimelineDisplay: FC<TimelineDisplayProps> = ({
   };
 
   const StepDisplay = () => {
-    const styles = {
-      [StepType.STUDY]: {
-        backgroundColour: "bg-pink-200",
-        border: "",
-      },
-      [StepType.CHECK_MISTAKES]: {
-        backgroundColour: "bg-pink-200/30",
-        border: "",
-      },
-      [StepType.BREAK]: {
-        backgroundColour: "bg-slate-900",
-        border: "border border-pink-200",
-      },
-      default: {
-        backgroundColour: "bg-pink-200",
-        border: "",
-      },
-    };
+    //   const styles = {
+    //     [StepType.STUDY]: {
+    //       backgroundColour: "bg-pink-200",
+    //       border: "",
+    //     },
+    //     [StepType.CHECK_MISTAKES]: {
+    //       backgroundColour: "bg-pink-200/30",
+    //       border: "",
+    //     },
+    //     [StepType.BREAK]: {
+    //       backgroundColour: "bg-slate-900",
+    //       border: "border border-pink-200",
+    //     },
+    //     default: {
+    //       backgroundColour: "bg-pink-200",
+    //       border: "",
+    //     },
+    //   };
+
     return (
       <div className="w-full h-3 flex gap-1">
         {sessionSteps.map((step) => {
-          // depending on step type display differently
-          const { backgroundColour, border } =
-            styles[step.stepType] || styles.default;
           return (
             <div
-              className={`h-full ${backgroundColour} ${border} rounded`}
+              className={`h-full bg-${step.bgColour} border border-${step.borderColour} rounded`}
               style={{ width: `${calculateStepWidth(step)}%` }}
             ></div>
           );
         })}
-        {/* <div className="w-1/2 h-full bg-pink-200 rounded"></div>
-        <div className="w-1/6 h-full border border-pink-200 rounded"></div>
-        <div className="w-1/3 h-full  bg-pink-200/30 rounded "></div> */}
+        
       </div>
     );
   };

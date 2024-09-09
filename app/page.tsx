@@ -19,8 +19,20 @@ export default function Home() {
     id: "1",
     img: "jdkwajd",
     steps: [
-      { stepType: StepType.STUDY, timeInSeconds: 2 },
-      { stepType: StepType.CHECK_MISTAKES, timeInSeconds: 4 },
+      {
+        name: "Study",
+        description: "hello",
+        timeInSeconds: 2,
+        bgColour: "pink-200",
+        borderColour: "",
+      },
+      {
+        name: "Check mistakes",
+        description: "check mistakes",
+        timeInSeconds: 6,
+        bgColour: "pink-200/30",
+        borderColour: "",
+      },
     ],
   });
 
