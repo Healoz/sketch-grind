@@ -6,7 +6,6 @@ import SessionSetup from "./components/session/setup/SessionSetup";
 import SessionInProgress from "./components/session/in-progress/SessionInProgress";
 import { Session } from "./types/Session";
 import { Step } from "./types/Step";
-import { StepType } from "./types/StepType";
 import { SessionStatus } from "./types/SessionStatus";
 import SessionComplete from "./components/session/complete/SessionComplete";
 
@@ -21,17 +20,24 @@ export default function Home() {
     steps: [
       {
         name: "Study",
-        description: "hello",
+        description:
+          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consectetur inventore cum enim suscipit maxime?",
         timeInSeconds: 2,
-        bgColour: "pink-200",
-        borderColour: "",
+        elementStyling: {
+          bgColour: "pink-200",
+          borderColour: "",
+          textColour: "slate-900",
+        },
       },
       {
         name: "Check mistakes",
         description: "check mistakes",
         timeInSeconds: 6,
-        bgColour: "pink-200/30",
-        borderColour: "",
+        elementStyling: {
+          bgColour: "pink-200/30",
+          borderColour: "",
+          textColour: "pink-200",
+        },
       },
     ],
   });

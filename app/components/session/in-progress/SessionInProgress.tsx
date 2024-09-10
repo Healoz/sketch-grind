@@ -1,7 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import SessionTimer from "./session-timer/SessionTimer";
 import StepName from "./StepName";
-import { StepType } from "@/app/types/StepType";
 import ImagePreview from "../setup/image-upload/ImagePreview";
 import Reference from "../../Reference";
 import ContentCopyRoundedIcon from "@mui/icons-material/ContentCopyRounded";
@@ -151,7 +150,7 @@ const SessionInProgress: FC<SessionInProgressProps> = ({
       <div className="flex w-full justify-between items-center">
         <Button icon={CloseRoundedIcon} size={Size.SMALL} />
         <StepName
-          stepType={session.steps[currentStepIndex].stepType}
+          step={session.steps[currentStepIndex]}
         ></StepName>
         <div className="w-[66px]"></div>
       </div>

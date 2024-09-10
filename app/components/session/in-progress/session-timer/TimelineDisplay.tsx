@@ -4,7 +4,6 @@ import Triangle from "../../../../../public/triangle.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Step } from "@/app/types/Step";
-import { StepType } from "@/app/types/StepType";
 
 interface TimelineDisplayProps {
   getTotalSessionTime: () => number;
@@ -48,12 +47,13 @@ const TimelineDisplay: FC<TimelineDisplayProps> = ({
         {sessionSteps.map((step) => {
           return (
             <div
-              className={`h-full bg-${step.bgColour} border border-${step.borderColour} rounded`}
+              className={`h-full bg-${step.elementStyling.bgColour} ${
+                step.elementStyling.borderColour ? `border border-${step.elementStyling.borderColour}` : ""
+              } rounded`}
               style={{ width: `${calculateStepWidth(step)}%` }}
             ></div>
           );
         })}
-        
       </div>
     );
   };
