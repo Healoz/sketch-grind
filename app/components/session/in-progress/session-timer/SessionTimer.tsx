@@ -7,7 +7,7 @@ import { Step } from "@/app/types/Step";
 
 interface SessionTimerProps {
   session: Session;
-  getTotalSessionTime: () => number;
+  getTotalSessionTime: (session: Session) => number;
   sessionProgress: number;
   setSessionRunning: (isRunning: boolean) => void;
   sessionRunning: boolean;
@@ -28,7 +28,7 @@ const SessionTimer: FC<SessionTimerProps> = ({
   setCurrentStepIndex,
   currentStepIndex,
   handleSkipBackwards,
-  handleSkipForwards
+  handleSkipForwards,
 }) => {
   const formatTime = (totalSeconds: number): string => {
     const hours = Math.floor(totalSeconds / 3600);
@@ -56,10 +56,11 @@ const SessionTimer: FC<SessionTimerProps> = ({
             getTotalSessionTime={getTotalSessionTime}
             sessionProgress={sessionProgress}
             sessionSteps={sessionSteps}
+            currentSession={session}
           />
         </div>
         {/* Full time */}
-        <TimeDisplay>{formatTime(getTotalSessionTime())}</TimeDisplay>
+        <TimeDisplay>{formatTime(getTotalSessionTime(session))}</TimeDisplay>
       </div>
       <TimelineControls
         setSessionRunning={setSessionRunning}

@@ -1,0 +1,86 @@
+{
+    "sessions": [
+      {
+        "id": "1",
+        "name": "session 1",
+        "img": "jdkwajd",
+        "steps": [
+          {
+            "name": "Study",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consectetur inventore cum enim suscipit maxime?",
+            "timeInSeconds": 2,
+            "elementStyling": {
+              "bgColour": "pink-200",
+              "borderColour": "",
+              "textColour": "slate-900"
+            }
+          },
+          {
+            "name": "Check mistakes",
+            "description": "check mistakes",
+            "timeInSeconds": 6,
+            "elementStyling": {
+              "bgColour": "pink-200/30",
+              "borderColour": "",
+              "textColour": "pink-200"
+            }
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "name": "session 2",
+        "img": "xyz123",
+        "steps": [
+          {
+            "name": "Warmup",
+            "description": "Do a short warmup before starting the session",
+            "timeInSeconds": 5,
+            "elementStyling": {
+              "bgColour": "blue-100",
+              "borderColour": "blue-500",
+              "textColour": "blue-900"
+            }
+          },
+          {
+            "name": "Main task",
+            "description": "Complete the main task",
+            "timeInSeconds": 10,
+            "elementStyling": {
+              "bgColour": "blue-200",
+              "borderColour": "blue-400",
+              "textColour": "blue-900"
+            }
+          }
+        ]
+      },
+      {
+        "id": "3",
+        "name": "session 3",
+        "img": "abc789",
+        "steps": [
+          {
+            "name": "Plan",
+            "description": "Plan your approach before starting",
+            "timeInSeconds": 3,
+            "elementStyling": {
+              "bgColour": "green-200",
+              "borderColour": "green-500",
+              "textColour": "green-900"
+            }
+          },
+          {
+            "name": "Execution",
+            "description": "Execute the plan",
+            "timeInSeconds": 8,
+            "elementStyling": {
+              "bgColour": "green-300",
+              "borderColour": "green-600",
+              "textColour": "green-900"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

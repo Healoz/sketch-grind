@@ -13,7 +13,7 @@ import { SessionStatus } from "@/app/types/SessionStatus";
 interface SessionInProgressProps {
   preview: string | ArrayBuffer | null;
   session: Session;
-  getTotalSessionTime: () => number;
+  getTotalSessionTime: (session: Session) => number;
   setSessionStatus: (sessionStatus: SessionStatus) => void;
 }
 

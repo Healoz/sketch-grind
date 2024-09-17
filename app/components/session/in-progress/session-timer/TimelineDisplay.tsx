@@ -4,9 +4,11 @@ import Triangle from "../../../../../public/triangle.svg";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Step } from "@/app/types/Step";
+import { Session } from "@/app/types/Session";
 
 interface TimelineDisplayProps {
-  getTotalSessionTime: () => number;
+  getTotalSessionTime: (session: Session) => number;
+  currentSession: Session;
   sessionProgress: number;
   sessionSteps: Step[];
 }
@@ -15,11 +17,12 @@ const TimelineDisplay: FC<TimelineDisplayProps> = ({
   getTotalSessionTime,
   sessionProgress,
   sessionSteps,
+  currentSession
 }) => {
-  const widthPassed = (sessionProgress / getTotalSessionTime()) * 100 + "%";
+  const widthPassed = (sessionProgress / getTotalSessionTime(currentSession)) * 100 + "%";
 
   const calculateStepWidth = (step: Step): number => {
-    return (step.timeInSeconds / getTotalSessionTime()) * 100;
+    return (step.timeInSeconds / getTotalSessionTime(currentSession)) * 100;
   };
 
   const StepDisplay = () => {
