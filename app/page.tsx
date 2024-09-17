@@ -76,7 +76,7 @@ export default function Home() {
             </motion.div>
           )}
 
-          {sessionStatus === SessionStatus.SESSION_SELECT && <SessionSelect />}
+          {sessionStatus === SessionStatus.SESSION_SELECT && (<SessionSelect preview={preview} />)}
 
           {sessionStatus === SessionStatus.IN_PROGRESS && (
             <motion.div
