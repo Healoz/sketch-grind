@@ -30,7 +30,7 @@ const ImagePreview: FC<ImagePreviewProps> = ({
             <Button icon={ArrowBackIcon} onClick={() => setPreview(null)}>
               Back
             </Button>
-            <Button icon={CreateIcon} onClick={() => setSessionStatus(SessionStatus.IN_PROGRESS)}>
+            <Button icon={CreateIcon} onClick={() => setSessionStatus(SessionStatus.SESSION_SELECT)}>
               Study Ref
             </Button>
           </div>

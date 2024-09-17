@@ -8,6 +8,7 @@ import { Session } from "./types/Session";
 import { Step } from "./types/Step";
 import { SessionStatus } from "./types/SessionStatus";
 import SessionComplete from "./components/session/complete/SessionComplete";
+import SessionSelect from "./components/session/setup/SessionSelect";
 
 export default function Home() {
   const [preview, setPreview] = useState<string | ArrayBuffer | null>(null);
@@ -74,6 +75,8 @@ export default function Home() {
               />
             </motion.div>
           )}
+
+          {sessionStatus === SessionStatus.SESSION_SELECT && <SessionSelect />}
 
           {sessionStatus === SessionStatus.IN_PROGRESS && (
             <motion.div
