@@ -33,7 +33,7 @@ export default function Home() {
     <main className="bg-slate-900 bg-cover bg-center font-sans flex items-center justify-center overflow-hidden">
       <motion.div className="min-w-full flex flex-col h-svh p-8" layout>
         <AnimatePresence>
-          {sessionStatus === SessionStatus.IN_PROGRESS && (
+          {sessionStatus === SessionStatus.SETUP && (
             <motion.div
               key={SessionStatus.SETUP}
               initial={{ opacity: 1, y: 0, x: 0 }}
@@ -62,7 +62,7 @@ export default function Home() {
             />
           )}
 
-          {sessionStatus === SessionStatus.SETUP && (
+          {sessionStatus === SessionStatus.IN_PROGRESS && (
             <motion.div
               key={SessionStatus.IN_PROGRESS}
               className="h-full"
