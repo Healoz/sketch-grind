@@ -78,6 +78,16 @@
               "borderColour": "green-600",
               "textColour": "green-900"
             }
+          },
+          {
+            "name": "Execution2",
+            "description": "Execute the plan",
+            "timeInSeconds": 8,
+            "elementStyling": {
+              "bgColour": "green-300",
+              "borderColour": "green-600",
+              "textColour": "green-900"
+            }
           }
         ]
       }

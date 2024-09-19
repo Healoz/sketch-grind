@@ -13,17 +13,27 @@ interface SessionSelectProps {
   getTotalSessionTime: (session: Session) => number;
 }
 
-const SessionSelect: FC<SessionSelectProps> = ({ preview, sessions, getTotalSessionTime }) => {
-
+const SessionSelect: FC<SessionSelectProps> = ({
+  preview,
+  sessions,
+  getTotalSessionTime,
+}) => {
   const [selectedSession, setSelectedSession] = useState<Session>();
 
   const handleSessionClick = (sessionId: string) => {
     console.log("Session clicked " + sessionId);
-    const selectedSession = sessions.find(session => session.id === sessionId);
-  }
+    const selectedSession = sessions.find(
+      (session) => session.id === sessionId
+    );
+  };
 
   const sessionsContent = sessions.map((session, index) => (
-    <SessionTile key={index} session={session} handleSessionClick={handleSessionClick}></SessionTile>
+    <SessionTile
+      key={index}
+      session={session}
+      handleSessionClick={handleSessionClick}
+      getTotalSessionTime={getTotalSessionTime}
+    ></SessionTile>
   ));
 
   // adding new session div to sessions array

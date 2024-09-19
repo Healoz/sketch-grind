@@ -4,6 +4,7 @@ import TimeDisplay from "./TimeDisplay";
 import TimelineControls from "./TimelineControls";
 import { Session } from "@/app/types/Session";
 import { Step } from "@/app/types/Step";
+import { formatTime } from "@/app/utils/formatTime";
 
 interface SessionTimerProps {
   session: Session;
@@ -30,21 +31,21 @@ const SessionTimer: FC<SessionTimerProps> = ({
   handleSkipBackwards,
   handleSkipForwards,
 }) => {
-  const formatTime = (totalSeconds: number): string => {
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = Math.floor(totalSeconds % 60);
+  // const formatTime = (totalSeconds: number): string => {
+  //   const hours = Math.floor(totalSeconds / 3600);
+  //   const minutes = Math.floor((totalSeconds % 3600) / 60);
+  //   const seconds = Math.floor(totalSeconds % 60);
 
-    const paddedHours = String(hours).padStart(2, "0");
-    const paddedMinutes = String(minutes).padStart(2, "0");
-    const paddedSeconds = String(seconds).padStart(2, "0");
+  //   const paddedHours = String(hours).padStart(2, "0");
+  //   const paddedMinutes = String(minutes).padStart(2, "0");
+  //   const paddedSeconds = String(seconds).padStart(2, "0");
 
-    if (hours <= 0) {
-      return `${paddedMinutes}:${paddedSeconds}`;
-    } else {
-      return `${paddedHours}:${paddedMinutes}:${paddedSeconds}`;
-    }
-  };
+  //   if (hours <= 0) {
+  //     return `${paddedMinutes}:${paddedSeconds}`;
+  //   } else {
+  //     return `${paddedHours}:${paddedMinutes}:${paddedSeconds}`;
+  //   }
+  // };
 
   return (
     <div>
