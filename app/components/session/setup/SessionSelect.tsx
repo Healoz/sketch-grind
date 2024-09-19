@@ -5,6 +5,7 @@ import Reference from "../../Reference";
 import SessionInfo from "./session-select/SessionInfo";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { Session } from "@/app/types/Session";
+import SessionPopup from "./session-select/SessionPopup";
 
 interface SessionSelectProps {
   preview: string | ArrayBuffer | null;
@@ -25,6 +26,7 @@ const SessionSelect: FC<SessionSelectProps> = ({
     const selectedSession = sessions.find(
       (session) => session.id === sessionId
     );
+    setSelectedSession(selectedSession);
   };
 
   const sessionsContent = sessions.map((session, index) => (
@@ -45,7 +47,7 @@ const SessionSelect: FC<SessionSelectProps> = ({
   );
 
   return (
-    <div className="text-pink-200 relative">
+    <div className="text-pink-200 relative h-full">
       <MainHeading />
       <div className="w-full flex flex-col items-center">
         <h1 className="text-xl tracking-tight justify-center flex mb-6">
@@ -63,6 +65,7 @@ const SessionSelect: FC<SessionSelectProps> = ({
       </div>
 
       {/* Session popup when session clicked */}
+      {selectedSession && <SessionPopup session={selectedSession} />}
     </div>
   );
 };
