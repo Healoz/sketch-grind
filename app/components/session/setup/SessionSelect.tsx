@@ -6,6 +6,7 @@ import SessionInfo from "./session-select/SessionInfo";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { Session } from "@/app/types/Session";
 import SessionPopup from "./session-select/SessionPopup";
+import useClickOutside from "@/app/utils/useClickOutside";
 
 interface SessionSelectProps {
   preview: string | ArrayBuffer | null;
@@ -20,9 +21,11 @@ const SessionSelect: FC<SessionSelectProps> = ({
   getTotalSessionTime,
 }) => {
   const [selectedSession, setSelectedSession] = useState<Session>();
+  const [sessionPopupShown, setSessionPopupShown] = useState(false);
 
   const handleSessionClick = (sessionId: string) => {
     console.log("Session clicked " + sessionId);
+    setSessionPopupShown(true);
     const selectedSession = sessions.find(
       (session) => session.id === sessionId
     );
@@ -65,7 +68,7 @@ const SessionSelect: FC<SessionSelectProps> = ({
       </div>
 
       {/* Session popup when session clicked */}
-      {selectedSession && <SessionPopup session={selectedSession} />}
+      {selectedSession && sessionPopupShown && <SessionPopup session={selectedSession} sessionPopupShown={sessionPopupShown} setSessionPopupShown={setSessionPopupShown}/>}
     </div>
   );
 };

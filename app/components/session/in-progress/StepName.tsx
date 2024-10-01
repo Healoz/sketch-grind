@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 
 interface StepNameProps {
   step: Step;
+  
 }
 
 const StepName: FC<StepNameProps> = ({ step }) => {
