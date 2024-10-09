@@ -1,12 +1,13 @@
 import React, { FC, useState } from "react";
-import MainHeading from "../../MainHeading";
-import SessionTile from "./session-select/SessionTile";
-import Reference from "../../Reference";
-import SessionInfo from "./session-select/SessionInfo";
+import MainHeading from "../../../MainHeading";
+import SessionTile from "./SessionTile";
+import Reference from "../../../Reference";
+import SessionInfo from "./SessionInfo";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { Session } from "@/app/types/Session";
-import SessionPopup from "./session-select/SessionPopup";
+import SessionPopup from "./SessionPopup";
 import useClickOutside from "@/app/utils/useClickOutside";
+import { formatTime } from "@/app/utils/formatTime";
 
 interface SessionSelectProps {
   preview: string | ArrayBuffer | null;
@@ -41,7 +42,7 @@ const SessionSelect: FC<SessionSelectProps> = ({
     ></SessionTile>
   ));
 
-  // adding new session div to sessions array
+  // adding create new session div to sessions array
   sessionsContent.unshift(
     <div className="flex flex-col gap-2 border rounded border-pink-200 bg-slate-800 p-4">
       <p>New Session</p>
@@ -50,7 +51,7 @@ const SessionSelect: FC<SessionSelectProps> = ({
   );
 
   return (
-    <div className="text-pink-200 relative h-full">
+    <div className="text-pink-200 relative h-full flex flex-col">
       <MainHeading />
       <div className="w-full flex flex-col items-center">
         <h1 className="text-xl tracking-tight justify-center flex mb-6">
@@ -63,12 +64,19 @@ const SessionSelect: FC<SessionSelectProps> = ({
         )}
       </div>
 
-      <div className="flex justify-center flex-col w-full">
-        <div className="grid grid-cols-2 gap-6">{sessionsContent}</div>
+      <div className="flex flex-col w-full h-full overflow-y-scroll border scrollbar rounded border-pink-200">
+        <div className="grid grid-cols-2 gap-6 p-4">{sessionsContent}</div>
       </div>
 
       {/* Session popup when session clicked */}
-      {selectedSession && sessionPopupShown && <SessionPopup session={selectedSession} sessionPopupShown={sessionPopupShown} setSessionPopupShown={setSessionPopupShown}/>}
+      {selectedSession && sessionPopupShown && (
+        <SessionPopup
+          session={selectedSession}
+          sessionPopupShown={sessionPopupShown}
+          setSessionPopupShown={setSessionPopupShown}
+          totalTime={getTotalSessionTime(selectedSession)}
+        />
+      )}
     </div>
   );
 };

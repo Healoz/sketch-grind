@@ -24,7 +24,7 @@ const Reference: FC<ReferenceProps> = ({ imgUrl }) => {
   // }
 
   return (
-    <div className="image-container">
+    <div className="image-container flex items-center justify-center">
       <img
         className="border-pink-200 bg-slate-950 border rounded mb-6 object-scale-down max-h-96"
         src={imgUrl}

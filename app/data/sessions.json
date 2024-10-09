@@ -90,6 +90,303 @@
             }
           }
         ]
+      },
+      {
+        "id": "4",
+        "name": "session 1",
+        "img": "jdkwajd",
+        "steps": [
+          {
+            "name": "Study",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consectetur inventore cum enim suscipit maxime?",
+            "timeInSeconds": 2,
+            "elementStyling": {
+              "bgColour": "pink-200",
+              "borderColour": "",
+              "textColour": "slate-900"
+            }
+          },
+          {
+            "name": "Check mistakes",
+            "description": "check mistakes",
+            "timeInSeconds": 6,
+            "elementStyling": {
+              "bgColour": "pink-200/30",
+              "borderColour": "",
+              "textColour": "pink-200"
+            }
+          }
+        ]
+      },
+      {
+        "id": "5",
+        "name": "session 1",
+        "img": "jdkwajd",
+        "steps": [
+          {
+            "name": "Study",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consectetur inventore cum enim suscipit maxime?",
+            "timeInSeconds": 2,
+            "elementStyling": {
+              "bgColour": "pink-200",
+              "borderColour": "",
+              "textColour": "slate-900"
+            }
+          },
+          {
+            "name": "Check mistakes",
+            "description": "check mistakes",
+            "timeInSeconds": 6,
+            "elementStyling": {
+              "bgColour": "pink-200/30",
+              "borderColour": "",
+              "textColour": "pink-200"
+            }
+          }
+        ]
+      },
+      {
+        "id": "6",
+        "name": "session 1",
+        "img": "jdkwajd",
+        "steps": [
+          {
+            "name": "Study",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consectetur inventore cum enim suscipit maxime?",
+            "timeInSeconds": 2,
+            "elementStyling": {
+              "bgColour": "pink-200",
+              "borderColour": "",
+              "textColour": "slate-900"
+            }
+          },
+          {
+            "name": "Check mistakes",
+            "description": "check mistakes",
+            "timeInSeconds": 6,
+            "elementStyling": {
+              "bgColour": "pink-200/30",
+              "borderColour": "",
+              "textColour": "pink-200"
+            }
+          }
+        ]
+      },
+      {
+        "id": "7",
+        "name": "session 1",
+        "img": "jdkwajd",
+        "steps": [
+          {
+            "name": "Study",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consectetur inventore cum enim suscipit maxime?",
+            "timeInSeconds": 2,
+            "elementStyling": {
+              "bgColour": "pink-200",
+              "borderColour": "",
+              "textColour": "slate-900"
+            }
+          },
+          {
+            "name": "Check mistakes",
+            "description": "check mistakes",
+            "timeInSeconds": 6,
+            "elementStyling": {
+              "bgColour": "pink-200/30",
+              "borderColour": "",
+              "textColour": "pink-200"
+            }
+          }
+        ]
+      },
+      {
+        "id": "8",
+        "name": "session 1",
+        "img": "jdkwajd",
+        "steps": [
+          {
+            "name": "Study",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consectetur inventore cum enim suscipit maxime?",
+            "timeInSeconds": 2,
+            "elementStyling": {
+              "bgColour": "pink-200",
+              "borderColour": "",
+              "textColour": "slate-900"
+            }
+          },
+          {
+            "name": "Check mistakes",
+            "description": "check mistakes",
+            "timeInSeconds": 6,
+            "elementStyling": {
+              "bgColour": "pink-200/30",
+              "borderColour": "",
+              "textColour": "pink-200"
+            }
+          }
+        ]
+      },
+      {
+        "id": "9",
+        "name": "session 1",
+        "img": "jdkwajd",
+        "steps": [
+          {
+            "name": "Study",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consectetur inventore cum enim suscipit maxime?",
+            "timeInSeconds": 2,
+            "elementStyling": {
+              "bgColour": "pink-200",
+              "borderColour": "",
+              "textColour": "slate-900"
+            }
+          },
+          {
+            "name": "Check mistakes",
+            "description": "check mistakes",
+            "timeInSeconds": 6,
+            "elementStyling": {
+              "bgColour": "pink-200/30",
+              "borderColour": "",
+              "textColour": "pink-200"
+            }
+          }
+        ]
+      },
+      {
+        "id": "10",
+        "name": "session 1",
+        "img": "jdkwajd",
+        "steps": [
+          {
+            "name": "Study",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consectetur inventore cum enim suscipit maxime?",
+            "timeInSeconds": 2,
+            "elementStyling": {
+              "bgColour": "pink-200",
+              "borderColour": "",
+              "textColour": "slate-900"
+            }
+          },
+          {
+            "name": "Check mistakes",
+            "description": "check mistakes",
+            "timeInSeconds": 6,
+            "elementStyling": {
+              "bgColour": "pink-200/30",
+              "borderColour": "",
+              "textColour": "pink-200"
+            }
+          }
+        ]
+      },
+      {
+        "id": "11",
+        "name": "session 1",
+        "img": "jdkwajd",
+        "steps": [
+          {
+            "name": "Study",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consectetur inventore cum enim suscipit maxime?",
+            "timeInSeconds": 2,
+            "elementStyling": {
+              "bgColour": "pink-200",
+              "borderColour": "",
+              "textColour": "slate-900"
+            }
+          },
+          {
+            "name": "Check mistakes",
+            "description": "check mistakes",
+            "timeInSeconds": 6,
+            "elementStyling": {
+              "bgColour": "pink-200/30",
+              "borderColour": "",
+              "textColour": "pink-200"
+            }
+          }
+        ]
+      },
+      {
+        "id": "12",
+        "name": "session 1",
+        "img": "jdkwajd",
+        "steps": [
+          {
+            "name": "Study",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consectetur inventore cum enim suscipit maxime?",
+            "timeInSeconds": 2,
+            "elementStyling": {
+              "bgColour": "pink-200",
+              "borderColour": "",
+              "textColour": "slate-900"
+            }
+          },
+          {
+            "name": "Check mistakes",
+            "description": "check mistakes",
+            "timeInSeconds": 6,
+            "elementStyling": {
+              "bgColour": "pink-200/30",
+              "borderColour": "",
+              "textColour": "pink-200"
+            }
+          }
+        ]
+      },
+      {
+        "id": "13",
+        "name": "session 1",
+        "img": "jdkwajd",
+        "steps": [
+          {
+            "name": "Study",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consectetur inventore cum enim suscipit maxime?",
+            "timeInSeconds": 2,
+            "elementStyling": {
+              "bgColour": "pink-200",
+              "borderColour": "",
+              "textColour": "slate-900"
+            }
+          },
+          {
+            "name": "Check mistakes",
+            "description": "check mistakes",
+            "timeInSeconds": 6,
+            "elementStyling": {
+              "bgColour": "pink-200/30",
+              "borderColour": "",
+              "textColour": "pink-200"
+            }
+          }
+        ]
+      },
+      {
+        "id": "14",
+        "name": "session 1",
+        "img": "jdkwajd",
+        "steps": [
+          {
+            "name": "Study",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima consectetur inventore cum enim suscipit maxime?",
+            "timeInSeconds": 2,
+            "elementStyling": {
+              "bgColour": "pink-200",
+              "borderColour": "",
+              "textColour": "slate-900"
+            }
+          },
+          {
+            "name": "Check mistakes",
+            "description": "check mistakes",
+            "timeInSeconds": 6,
+            "elementStyling": {
+              "bgColour": "pink-200/30",
+              "borderColour": "",
+              "textColour": "pink-200"
+            }
+          }
+        ]
       }
     ]
   }

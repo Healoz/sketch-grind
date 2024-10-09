@@ -8,7 +8,7 @@ import { Session } from "./types/Session";
 import { Step } from "./types/Step";
 import { SessionStatus } from "./types/SessionStatus";
 import SessionComplete from "./components/session/complete/SessionComplete";
-import SessionSelect from "./components/session/setup/SessionSelect";
+import SessionSelect from "./components/session/setup/session-select/SessionSelect";
 import sessionsData from "./data/sessions.json";
 
 export default function Home() {
@@ -30,7 +30,7 @@ export default function Home() {
   };
 
   return (
-    <main className="bg-slate-900 bg-cover bg-center font-sans flex items-center justify-center overflow-hidden">
+    <main className="bg-slate-900 bg-cover bg-center font-sans flex items-center justify-center overflow-hidden scroll-smooth">
       <motion.div className="min-w-full flex flex-col h-svh p-8" layout>
         <AnimatePresence>
           {sessionStatus === SessionStatus.SETUP && (

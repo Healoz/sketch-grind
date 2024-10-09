@@ -20,7 +20,7 @@ const SessionTile: FC<SessionTileProps> = ({ session, handleSessionClick, getTot
 
   return (
     <div
-      className="flex flex-col gap-2 border rounded border-pink-200 p-4"
+      className="flex flex-col gap-2 border rounded border-pink-200 p-4 hover:cursor-pointer"
       onClick={() => handleSessionClick(session.id)}
     >
       <p>{session.name}</p>
